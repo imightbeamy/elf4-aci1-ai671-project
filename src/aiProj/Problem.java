@@ -18,12 +18,12 @@ public class Problem {
 	}
 
 	public String toString(){
-		String description = "Problem: ";
+		StringBuilder description = new StringBuilder("Problem Concepts: ");
 		for (Concept c: myConcepts){
-			description += c.toString() + ", ";
+			description.append(c.getId() + ", ");
 		}
-		description += "\n\tSucceeded?" + suceeded;
-		return description;
+		description.append("\n\tSucceeded? " + suceeded);
+		return description.toString();
 	}
 
 	public ArrayList<Concept> getConcepts(){

@@ -10,6 +10,14 @@ public class Exam implements Iterable<Problem>{
 	public Exam(){
 		problems = new ArrayList<Problem>();
 	}
+	
+	public Exam(ConceptFramework framework, int numProblems, int maxProblemConcepts)
+	{
+		this();
+		for (int i = 0; i < numProblems; i++){
+			this.add(framework.newProblem(maxProblemConcepts));
+		}
+	}
 
 	public void add(Problem newProblem) {
 		problems.add(newProblem.clone());
