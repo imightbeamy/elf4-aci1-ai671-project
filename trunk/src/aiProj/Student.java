@@ -1,6 +1,5 @@
 package aiProj;
 
-import java.util.Iterator;
 import java.util.Random;
 
 public class Student {
@@ -15,10 +14,8 @@ public class Student {
 	}
 
 	public void take(Exam exam) {
-		Problem current;
-		for (Iterator<Problem> it = exam.iterator(); it.hasNext();){
-			current = it.next();
-			current.setResults(attempt(current));
+		for (Problem p: exam){
+			p.setResults(attempt(p));
 		}
 	}
 
