@@ -1,7 +1,7 @@
 package aiProj;
 
 public class FinalProject {
-	
+
 	public static void main(String[] args){
 		int numConcepts = 5;
 		int numProblems = 5;
