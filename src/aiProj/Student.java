@@ -17,6 +17,7 @@ public class Student {
 		for (Problem p: exam){
 			p.setResults(attempt(p));
 		}
+		exam.wasTaken();
 	}
 
 	private boolean attempt(Problem current) {
