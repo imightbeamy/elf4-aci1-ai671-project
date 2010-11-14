@@ -5,7 +5,8 @@ import java.util.Iterator;
 
 public class Exam implements Iterable<Problem>{
 	
-	ArrayList<Problem> problems;
+	private ArrayList<Problem> problems;
+	private boolean completed = false;
 	
 	public Exam(){
 		problems = new ArrayList<Problem>();
@@ -30,7 +31,17 @@ public class Exam implements Iterable<Problem>{
 		}
 		return description;
 	}
+	
+	public boolean hasResults()
+	{
+		return completed;
+	}
 
+	public void wasTaken()
+	{
+		completed = true;
+	}
+	
 	@Override
 	public Iterator<Problem> iterator() {
 		return problems.iterator();
