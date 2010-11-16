@@ -19,9 +19,23 @@ public class Exam implements Iterable<Problem>{
 			this.add(framework.newProblem(maxProblemConcepts));
 		}
 	}
+	
+	public Exam(Exam e)
+	{
+		this();
+		for(Problem p: e.problems)
+			this.add(p.clone());
+	}
 
 	public void add(Problem newProblem) {
 		problems.add(newProblem.clone());
+	}
+	
+	public Problem getProblem(int p)
+	{
+		if(p >= 0 && p <  problems.size())
+			return problems.get(p);
+		return null;
 	}
 	
 	public String toString(){

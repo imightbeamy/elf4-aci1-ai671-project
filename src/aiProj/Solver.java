@@ -4,9 +4,10 @@ public abstract class Solver {
 	
 	StudentConceptFramework studentUnderstanding;
 	boolean seeded = false;
-	
+	int numConcepts;
 	public Solver(int numConcepts)
 	{
+		this.numConcepts = numConcepts;
 		studentUnderstanding = new StudentConceptFramework(numConcepts);
 	}
 	

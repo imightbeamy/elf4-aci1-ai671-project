@@ -35,6 +35,9 @@ public class Problem {
 		
 	}
 	
+	public boolean results() {
+		return suceeded;
+	}
 	
 
 }

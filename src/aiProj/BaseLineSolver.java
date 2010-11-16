@@ -2,6 +2,7 @@ package aiProj;
 
 public class BaseLineSolver extends Solver {
 
+	
 	public BaseLineSolver(int numConcepts) {
 		super(numConcepts);
 		// TODO Auto-generated constructor stub
@@ -9,9 +10,8 @@ public class BaseLineSolver extends Solver {
 
 	public void seed(Exam exam) {
 		if(exam.hasResults())
-		{
-			int numCon = studentUnderstanding.numberofConcepts();
-			int problemsperconcept[] = new int[numCon];
+		{	
+			int problemsperconcept[] = new int[numConcepts];
 			for(Problem p: exam)
 			{
 				for(Concept c: p.getConcepts())
@@ -20,7 +20,7 @@ public class BaseLineSolver extends Solver {
 				}
 			}
 			
-			for(int id = 0; id < numCon; id++)
+			for(int id = 0; id < numConcepts; id++)
 			{
 				studentUnderstanding.setUnderstanding(id, 1/(float)problemsperconcept[id]);
 			}
