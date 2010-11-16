@@ -2,18 +2,14 @@ package aiProj;
 
 public abstract class Solver {
 	
-	public Solver(ConceptFramework mind)
+	StudentConceptFramework studentUnderstanding;
+	boolean seeded = false;
+	
+	public Solver(int numConcepts)
 	{
-		
+		studentUnderstanding = new StudentConceptFramework(numConcepts);
 	}
 	
-	public void seed(Exam exam)
-	{
-		
-	}
-	
-	public void predictResults(Exam exam)
-	{
-		
-	}
+	public abstract void seed(Exam exam);
+	public abstract void predictResults(Exam exam);
 }
