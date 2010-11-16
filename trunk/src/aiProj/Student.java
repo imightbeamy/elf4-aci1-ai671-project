@@ -28,5 +28,4 @@ public class Student {
 		System.out.println(probabilityOfSuccess);
 		return probabilityOfSuccess >= gen.nextDouble();
 	}
-
 }

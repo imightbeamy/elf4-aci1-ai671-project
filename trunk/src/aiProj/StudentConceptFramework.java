@@ -8,10 +8,12 @@ public class StudentConceptFramework{
 
 	private ArrayList<StudentConcept> concepts;
 	private int levels; 
+	private int numConcepts;
 	
 	public StudentConceptFramework(int levels, int numConcepts) {
 		concepts = new ArrayList<StudentConcept>(numConcepts);
 		this.levels = levels;
+		this.numConcepts = numConcepts;
 	}
 
 	public StudentConceptFramework(int numConcepts) {
@@ -19,6 +21,7 @@ public class StudentConceptFramework{
 	}
 	
 	public void add(StudentConcept c){
+		concepts.ensureCapacity(numConcepts);
 		int id = c.getId();
 		if(id < concepts.size())
 		{
