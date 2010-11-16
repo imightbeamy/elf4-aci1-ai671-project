@@ -7,21 +7,29 @@ import java.util.ArrayList;
 public class StudentConceptFramework{
 
 	private ArrayList<StudentConcept> concepts;
-	private int levels;
+	private int levels; 
 	
-	public StudentConceptFramework(int levels) {
-		concepts = new ArrayList<StudentConcept>();
+	public StudentConceptFramework(int levels, int numConcepts) {
+		concepts = new ArrayList<StudentConcept>(numConcepts);
 		this.levels = levels;
+	}
+
+	public StudentConceptFramework(int numConcepts) {
+		this(1,numConcepts);
 	}
 	
 	public void add(StudentConcept c){
-		concepts.add(c);
+		int id = c.getId();
+		if(id < concepts.size())
+		{
+			concepts.set(id,c);
+		}
 	}
 
 
 	public double getAbility(Concept c) {		
 		int id = c.getId();
-		if(id < concepts.size())
+		if(id < concepts.size() && concepts.get(id) != null)
 		{
 			return (concepts.get(id).getLevel() + 1) / levels;
 		}
@@ -31,15 +39,24 @@ public class StudentConceptFramework{
 	
 	public void setUnderstanding(StudentConcept c, int level)
 	{
-		setUnderstanding(c, (float)level/levels);
+		setUnderstanding(c.getId(), (float)level/levels);
 	}
 	
 	public void setUnderstanding(StudentConcept c, float level)
 	{
-		int id = c.getId();
-		if(id < concepts.size())
+		setUnderstanding(c.getId(), level);
+	}
+
+	public void setUnderstanding(int studentConceptID, float level)
+	{
+		if(studentConceptID < concepts.size() && concepts.get(studentConceptID) != null)
 		{
-			concepts.get(c.getId()).setLevel(level);
+			concepts.get(studentConceptID).setLevel(level);
 		}
+	}
+	
+	public int numberofConcepts()
+	{
+		return concepts.size();
 	}
 }

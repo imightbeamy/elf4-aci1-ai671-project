@@ -17,7 +17,7 @@ public class ConceptFramework {
 	
 	public Student makeStudent(int levelsOfUnderstanding){
 		StudentConceptFramework studentMind =
-			new StudentConceptFramework(levelsOfUnderstanding);
+			new StudentConceptFramework(levelsOfUnderstanding, allConcepts.size());
 		for (Concept c: allConcepts){
 			StudentConcept s = new StudentConcept(c.getId(), 
 					gen.nextInt(levelsOfUnderstanding));
