@@ -15,7 +15,7 @@ public class Student {
 
 	public void take(Exam exam) {
 		for (Problem p: exam){
-			p.setResults(attempt(p));
+			p.setResults(attempt(p));;
 		}
 		exam.wasTaken();
 	}
