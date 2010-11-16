@@ -12,8 +12,13 @@ public class Concept {
 		return id;
 	}
 	
-	public boolean equals(Concept c){
-		return c.id == id;
+	public boolean equals(Object o){
+		if(o instanceof Concept)
+		{
+			Concept c = (Concept)o;
+			return c.id == id;
+		}
+		return false;
 	}
 	
 	public String toString(){

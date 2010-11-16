@@ -23,7 +23,6 @@ public class ConceptFramework {
 					gen.nextInt(levelsOfUnderstanding));
 			studentMind.add(s);
 			System.out.println(s.getLevel());
-			
 		}
 		return new Student(studentMind);
 	}
