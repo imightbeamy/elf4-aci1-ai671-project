@@ -6,27 +6,44 @@ public class BaseLineSolver extends Solver {
 
 	private Random gen;
 	
+	private int CORRECTIDX = 0;
+	private int ALLIDX     = 1;
+	
+	
 	public BaseLineSolver(int numConcepts) {
 		super(numConcepts);
 		gen = new Random();
-		// TODO Auto-generated constructor stub
 	}
 
 	public void seed(Exam exam) {
+		
 		if(exam.hasResults())
 		{	
-			int problemsperconcept[] = new int[numConcepts];
+			int concepts[][] = new int[numConcepts][2];
 			for(Problem p: exam)
 			{
 				for(Concept c: p.getConcepts())
 				{
-					problemsperconcept[c.getId()]++;
+					if (p.results())
+					{
+						concepts[c.getId()][CORRECTIDX]++;
+					}
+					concepts[c.getId()][ALLIDX]++;
 				}
 			}
 			
 			for(int id = 0; id < numConcepts; id++)
 			{
-				studentUnderstanding.setUnderstanding(id, (float)problemsperconcept[id]);
+				
+				float understanding = 1;
+				if (concepts[id][ALLIDX] != 0)
+				{
+					//System.out.println(concepts[id][CORRECTIDX]+ "/" +(float)concepts[id][ALLIDX]);
+					understanding = 
+					    concepts[id][CORRECTIDX]/(float)concepts[id][ALLIDX];
+				}
+				//System.out.println(understanding);
+				studentUnderstanding.setUnderstanding(id, understanding);
 			}
 			seeded = true;
 		}
@@ -39,9 +56,10 @@ public class BaseLineSolver extends Solver {
 			double probabilityOfSuccess;
 			for(Problem p: exam)
 			{
-				probabilityOfSuccess = .5;
+				probabilityOfSuccess = 1;
 				for (Concept c: p.getConcepts()){
 					probabilityOfSuccess *= studentUnderstanding.getAbility(c);
+					//System.out.println(studentUnderstanding.getAbility(c));
 				}
 				//p.setResults(probabilityOfSuccess >= .5);
 				p.setResults(probabilityOfSuccess >= gen.nextDouble());

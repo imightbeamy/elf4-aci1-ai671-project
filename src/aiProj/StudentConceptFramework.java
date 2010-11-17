@@ -38,7 +38,7 @@ public class StudentConceptFramework{
 		int id = c.getId();
 		if(id < concepts.size() && concepts.get(id) != null)
 		{
-			return (concepts.get(id).getLevel()) / (levels - 1.0);
+			return concepts.get(id).getLevel();
 		}
 		
 		return 1;
@@ -46,20 +46,18 @@ public class StudentConceptFramework{
 	
 	public void setUnderstanding(StudentConcept c, int level)
 	{
-		setUnderstanding(c.getId(), (float)level/levels);
-	}
-	
-	public void setUnderstanding(StudentConcept c, float level)
-	{
-		setUnderstanding(c.getId(), level);
+		setUnderstanding(c.getId(), level/(levels - 1.0));
 	}
 
-	public void setUnderstanding(int studentConceptID, float level)
+	public void setUnderstanding(int studentConceptID, double level)
 	{
 		if(studentConceptID < concepts.size() &&
 				concepts.get(studentConceptID) != null)
 		{
-			concepts.get(studentConceptID).setLevel(level);
+			concepts.get(studentConceptID).setLevel((float)level);
+		}
+		else {
+			add(new StudentConcept(studentConceptID, (float) level));
 		}
 	}
 	
