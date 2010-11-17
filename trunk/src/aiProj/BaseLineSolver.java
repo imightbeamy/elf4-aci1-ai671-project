@@ -61,8 +61,8 @@ public class BaseLineSolver extends Solver {
 					probabilityOfSuccess *= studentUnderstanding.getAbility(c);
 					//System.out.println(studentUnderstanding.getAbility(c));
 				}
-				//p.setResults(probabilityOfSuccess >= .5);
-				p.setResults(probabilityOfSuccess >= gen.nextDouble());
+				p.setResults(probabilityOfSuccess >= .5);
+				//p.setResults(probabilityOfSuccess >= gen.nextDouble());
 				
 			}
 		}

@@ -3,8 +3,8 @@ package aiProj;
 public class FinalProject {
 
 	public static void main(String[] args){
-		int numConcepts = 5;
-		int numProblems = 50;
+		int numConcepts = 50;
+		int numProblems = 500;
 		int levelsOfUnderstanding = 100;
 		int maxProblemConcepts = 2;
 		
@@ -31,13 +31,23 @@ public class FinalProject {
 		bls.predictResults(baseLineCopy);
 		
 		System.out.println("Predictions\tResults");
-		for(int p = 0; p < numProblems; p++)
-			System.out.println(baseLineCopy.getProblem(p).results() + "\t\t" + trailExam.getProblem(p).results());
-		
-
-
-
-		
+		int correctPredictions = 0;
+		int numFalse = 0;
+		for(int p = 0; p < numProblems; p++){
+			System.out.println(baseLineCopy.getProblem(p).results()
+					+ "\t\t" + trailExam.getProblem(p).results());
+			if (baseLineCopy.getProblem(p).results()
+					== trailExam.getProblem(p).results())
+			{
+				correctPredictions ++;
+			}
+			if (! trailExam.getProblem(p).results())
+			{
+				numFalse ++;
+			}
+		}
+		System.out.println("# student answered wrong: " + numFalse);
+		System.out.println("# correctly predicted: " + correctPredictions);
 		
 	}
 }
