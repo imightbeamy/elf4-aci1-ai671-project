@@ -12,6 +12,9 @@ public class StudentConceptFramework{
 	
 	public StudentConceptFramework(int levels, int numConcepts) {
 		concepts = new ArrayList<StudentConcept>(numConcepts);
+		for (int i = 0; i < numConcepts; i++){
+			concepts.add(null);
+		}
 		this.levels = levels;
 		this.numConcepts = numConcepts;
 	}
@@ -23,6 +26,7 @@ public class StudentConceptFramework{
 	public void add(StudentConcept c){
 		concepts.ensureCapacity(numConcepts);
 		int id = c.getId();
+		//System.out.println(c.getId());
 		if(id < concepts.size())
 		{
 			concepts.set(id,c);
@@ -34,7 +38,7 @@ public class StudentConceptFramework{
 		int id = c.getId();
 		if(id < concepts.size() && concepts.get(id) != null)
 		{
-			return (concepts.get(id).getLevel() + 1) / levels;
+			return (concepts.get(id).getLevel()) / (levels - 1.0);
 		}
 		
 		return 1;
@@ -52,7 +56,8 @@ public class StudentConceptFramework{
 
 	public void setUnderstanding(int studentConceptID, float level)
 	{
-		if(studentConceptID < concepts.size() && concepts.get(studentConceptID) != null)
+		if(studentConceptID < concepts.size() &&
+				concepts.get(studentConceptID) != null)
 		{
 			concepts.get(studentConceptID).setLevel(level);
 		}

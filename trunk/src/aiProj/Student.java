@@ -21,11 +21,11 @@ public class Student {
 	}
 
 	private boolean attempt(Problem current) {
-		double probabilityOfSuccess = .5;
+		double probabilityOfSuccess = 1;
 		for (Concept c: current.getConcepts()){
 			probabilityOfSuccess *= mind.getAbility(c);
 		}
-		System.out.println(probabilityOfSuccess);
+		//System.out.println(probabilityOfSuccess);
 		return probabilityOfSuccess >= gen.nextDouble();
 	}
 }
