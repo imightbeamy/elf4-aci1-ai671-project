@@ -21,7 +21,9 @@ public class ConceptFramework {
 		for (Concept c: allConcepts){
 			StudentConcept s = new StudentConcept(c.getId(), 
 					gen.nextInt(levelsOfUnderstanding));
+			
 			studentMind.add(s);
+			studentMind.setUnderstanding(s, gen.nextInt(levelsOfUnderstanding));
 			//System.out.println(s.getLevel());
 		}
 		return new Student(studentMind);
