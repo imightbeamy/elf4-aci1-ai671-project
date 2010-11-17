@@ -4,9 +4,9 @@ public class FinalProject {
 
 	public static void main(String[] args){
 		int numConcepts = 5;
-		int numProblems = 5;
-		int levelsOfUnderstanding = 3;
-		int maxProblemConcepts = 3;
+		int numProblems = 50;
+		int levelsOfUnderstanding = 100;
+		int maxProblemConcepts = 2;
 		
 		ConceptFramework framework = new ConceptFramework(numConcepts);
 		
@@ -16,7 +16,7 @@ public class FinalProject {
 		Exam trainingExam = new Exam(framework, numProblems, maxProblemConcepts);
 		System.out.println("Students takes training exam.");
 		originalStudent.take(trainingExam);
-		System.out.println("***********Training Exam Resultes***********");
+		System.out.println("***********Training Exam Results***********");
 		System.out.println(trainingExam.toString());
 		
 		System.out.println("Seed Baseline Solver.");		
@@ -30,9 +30,9 @@ public class FinalProject {
 		originalStudent.take(trailExam);
 		bls.predictResults(baseLineCopy);
 		
-		System.out.println("Predictions\tResultes");
+		System.out.println("Predictions\tResults");
 		for(int p = 0; p < numProblems; p++)
-			System.out.println(baseLineCopy.getProblem(p).results() + "\t" + trailExam.getProblem(p).results());
+			System.out.println(baseLineCopy.getProblem(p).results() + "\t\t" + trailExam.getProblem(p).results());
 		
 
 
