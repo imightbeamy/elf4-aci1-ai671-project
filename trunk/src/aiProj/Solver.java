@@ -5,9 +5,12 @@ public abstract class Solver {
 	StudentConceptFramework studentUnderstanding;
 	boolean seeded = false;
 	int numConcepts;
-	public Solver(int numConcepts)
+	int understandingLevels;
+	
+	public Solver(int numConcepts, int understandingLevels)
 	{
 		this.numConcepts = numConcepts;
+		this.understandingLevels = understandingLevels;
 		studentUnderstanding = new StudentConceptFramework(numConcepts);
 	}
 	
@@ -23,8 +26,6 @@ public abstract class Solver {
 					probabilityOfSuccess *= studentUnderstanding.getAbility(c);
 				}
 				p.setResults(probabilityOfSuccess >= .5);
-				
-				 
 			}
 		}
 	}

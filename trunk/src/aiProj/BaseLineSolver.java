@@ -10,7 +10,7 @@ public class BaseLineSolver extends Solver {
 	
 	
 	public BaseLineSolver(int numConcepts) {
-		super(numConcepts);
+		super(numConcepts,0);
 	}
 
 	public void seed(Exam exam) {
