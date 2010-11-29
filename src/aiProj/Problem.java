@@ -32,7 +32,6 @@ public class Problem {
 	
 	public void setResults(boolean attempt) {
 		suceeded = attempt;
-		
 	}
 	
 	public boolean results() {
