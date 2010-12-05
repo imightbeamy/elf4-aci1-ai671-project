@@ -28,4 +28,10 @@ public class Student {
 		//System.out.println(probabilityOfSuccess);
 		return probabilityOfSuccess >= gen.nextDouble();
 	}
+	
+	public Student clone(){
+		Student student = new Student((StudentConceptFramework)mind.clone());
+		return student;
+		
+	}
 }
