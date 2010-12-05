@@ -4,7 +4,7 @@ public class FinalProject {
 
 	public static void main(String[] args){
 		int numConcepts = 8;
-		int numProblems = 100;
+		int numProblems = 500;
 		int levelsOfUnderstanding = 4;
 		int maxProblemConcepts = 2;
 		
