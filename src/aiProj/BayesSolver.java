@@ -1,9 +1,8 @@
 package aiProj;
 
-public class BayesSolver extends Solver{
+import java.util.ArrayList;
 
-	private int CORRECTIDX = 0;
-	private int ALLIDX     = 1;
+public class BayesSolver extends Solver{
 	
 	public BayesSolver(int numConcepts, int understandingLevels) {
 		super(numConcepts, understandingLevels);
@@ -12,66 +11,85 @@ public class BayesSolver extends Solver{
 	@Override
 	public void seed(Exam exam) {
 		
+		ArrayList<StudentConceptFramework> minds = 
+			new ArrayList<StudentConceptFramework>();
+
+		
+		minds = GenerateMinds();
 		if(exam.hasResults())
 		{	
-			int concepts[][] = new int[numConcepts][2];
-			for(Problem p: exam)
-			{
-				for(Concept c: p.getConcepts())
-				{
-					if (p.results())
-					{
-						concepts[c.getId()][CORRECTIDX]++;
-					}
-					concepts[c.getId()][ALLIDX]++;
-				}
-			}
-			
-			double p;
-			int corr,incorr, level = 0;
-			
-			for(int id = 0; id < numConcepts; id++)
-			{
-				double max_u = 0;
-				level = 0;
-				for(int i = 0; i < understandingLevels - 1; i++)
-				{
-					corr = concepts[id][CORRECTIDX];
-					incorr = concepts[id][ALLIDX] - corr;
-					p = Prob_evidence_given_ui(i,corr,incorr);
-					if(p > max_u)
-					{
-						max_u = p;
-						level = i;
-					}
-				}
-				studentUnderstanding.setUnderstanding(id, level);
-			}
+			double maxProb = 0;
+			StudentConceptFramework maxMind = null;
+		    for (StudentConceptFramework framework: minds){
+		    	if (examProbability(framework, exam) > maxProb){
+		    		maxMind = framework;
+		    		maxProb = examProbability(framework, exam);
+		    	}
+		    }
+		    studentUnderstanding = maxMind;
 			seeded = true;
 		}
 		
 	}
 
-	double Prob_ui_given_evidence(int i, int correct_j, int incorrect_k)
-	{
-		return Prob_evidence_given_ui(i,correct_j,incorrect_k)/Prob_evidence(correct_j, incorrect_k);
-	}
-	
-	double Prob_evidence(int correct_j, int incorrect_k)
-	{
-		double p = 0;
-		for(int i = 0; i < understandingLevels - 1; i++)
-		{
-			double a = (double)i / (understandingLevels - 1);
-			p+=Math.pow(a,correct_j) * Math.pow(1 - a,incorrect_k);
+	private double examProbability(StudentConceptFramework framework, Exam exam) {
+		double probability = 1;
+		for (Problem p: exam.problems){
+			if (p.results()) {
+				probability *= Probabilty(framework, p);
+			}
+			else {
+				probability *= (1 - Probabilty(framework, p));
+			}
+				
 		}
-		return p;
+		return probability;
 	}
-	
-	double Prob_evidence_given_ui(int i, int correct_j, int incorrect_k)
-	{
-		double a = (double)i / (understandingLevels - 1);
-		System.out.println(a + "     " + Math.pow(a,correct_j) +"  "+ Math.pow(1 - a,incorrect_k));
-		return  Math.pow(a,correct_j) * Math.pow(1 - a,incorrect_k);
+
+	private double Probabilty(StudentConceptFramework framework, Problem p) {
+		double probability = 1;
+		for (Concept c: p.getConcepts()){
+			probability *= framework.getAbility(c);
+		}
+		return probability;
 	}
+
+	private ArrayList<StudentConceptFramework> GenerateMinds() {
+		ArrayList<StudentConceptFramework> minds = new ArrayList<StudentConceptFramework>();
+		ArrayList<ArrayList<Integer>> settings = new ArrayList<ArrayList<Integer>>();
+		settings = generateSettings(numConcepts);
+		for (ArrayList<Integer> setting: settings){
+			minds.add(new StudentConceptFramework(setting, understandingLevels));
+		}
+		return minds;
+	}
+
+	private ArrayList<ArrayList<Integer>> generateSettings(int concepts) {
+		if (concepts == 0){
+			ArrayList<ArrayList<Integer>> first = new ArrayList<ArrayList<Integer>>();
+			for (int num = 0; num < understandingLevels; num++){
+				ArrayList<Integer> a = new ArrayList<Integer>();
+				a.add(num);
+				first.add(a);
+			}
+			return first;
+		} else {
+			ArrayList<ArrayList<Integer>> prevSettings = 
+				generateSettings(concepts - 1);
+			ArrayList<ArrayList<Integer>> settings = 
+				new ArrayList<ArrayList<Integer>>();
+			ArrayList<Integer> current;
+			for (ArrayList<Integer> setting: prevSettings){
+				for (int num = 0; num < understandingLevels; num++){
+					current = (ArrayList<Integer>) setting.clone();
+					current.add(num);
+					settings.add(current);
+				}
+			}
+			
+			return settings;
+			
+		}
+	}
+
 }

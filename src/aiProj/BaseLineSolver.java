@@ -1,7 +1,5 @@
 package aiProj;
 
-import java.util.Random;
-
 public class BaseLineSolver extends Solver {
 
 	

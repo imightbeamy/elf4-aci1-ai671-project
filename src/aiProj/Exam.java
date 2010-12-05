@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class Exam implements Iterable<Problem>{
 	
-	private ArrayList<Problem> problems;
+	public ArrayList<Problem> problems;
 	private boolean completed = false;
 	
 	public Exam(){
