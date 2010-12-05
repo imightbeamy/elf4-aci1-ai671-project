@@ -5,7 +5,7 @@ public class FinalProject {
 	public static void main(String[] args){
 		int numConcepts = 5;
 		int numProblems = 1000;
-		int levelsOfUnderstanding = 3;
+		int levelsOfUnderstanding = 10;
 		int maxProblemConcepts = 2;
 		
 		ConceptFramework framework = new ConceptFramework(numConcepts);
@@ -42,9 +42,9 @@ public class FinalProject {
 		int correctPredictions_bayes = 0;
 		int numFalse = 0;
 		for(int p = 0; p < numProblems; p++){
-			//System.out.println(baseLineCopy.getProblem(p).results() + "\t\t" 
-				//			+ bayesCopy.getProblem(p).results() + "\t\t"
-					//		+	trailExam.getProblem(p).results());
+			System.out.println(baseLineCopy.getProblem(p).results() + "\t\t" 
+							+ bayesCopy.getProblem(p).results() + "\t\t"
+							+	trailExam.getProblem(p).results());
 			
 			if (baseLineCopy.getProblem(p).results()
 					== trailExam.getProblem(p).results())
