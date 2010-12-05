@@ -71,10 +71,7 @@ public class StudentConceptFramework{
 		}
 	}
 	
-	
-	
-	
-	
+		
 	public int numberofConcepts()
 	{
 		return concepts.size();
@@ -89,5 +86,11 @@ public class StudentConceptFramework{
 		
 		
 		return toReturn;
+	}
+	
+	public StudentConceptFramework clone(){
+		StudentConceptFramework clone = new StudentConceptFramework(levels, numConcepts);
+		clone.concepts = (ArrayList<StudentConcept>) concepts.clone();
+		return clone;
 	}
 }
