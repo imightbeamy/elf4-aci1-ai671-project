@@ -6,9 +6,9 @@ public class FinalProject {
 
 	public static void main(String[] args){
 	
-		int numConcepts = 8;
+		int numConcepts = 5;
 		int numProblems = 500;
-		int levelsOfUnderstanding = 4;
+		int levelsOfUnderstanding = 5;
 		int maxProblemConcepts = 2;
 	 	
 		if(args.length == 4)
@@ -28,28 +28,23 @@ public class FinalProject {
 		
 		Student originalStudent = framework.makeStudent(levelsOfUnderstanding);
 		
-//		System.out.println("Make training exam.");
+		System.out.println("Make training exam.");
 		Exam trainingExam = new Exam(framework, numProblems, maxProblemConcepts);
-//		System.out.println("Students takes training exam.");
+		System.out.println("Students takes training exam.");
 		originalStudent.take(trainingExam);
 //		System.out.println("***********Training Exam Results***********");
 //		System.out.println(trainingExam.toString());
 		
-//		System.out.print("Seed Baseline Solver...");		
+		System.out.print("Seed Baseline Solver...");	
 		BaseLineSolver bls = new BaseLineSolver(numConcepts);
 		bls.seed(trainingExam);
-//		System.out.println("done.");
+		System.out.println("done.");
 		
-//		System.out.print("Seed Bayse Solver...");		
+		System.out.print("Seed Bayse Solver...");		
 		BayesSolver bayess = new BayesSolver(numConcepts, levelsOfUnderstanding);
-		long start = System.currentTimeMillis();
 		bayess.seed(trainingExam);
-		long end = System.currentTimeMillis();
-		long time = (end - start)/100;
-		System.out.println("Bayes seedtime " + time + " s");
 		
-		
-//		System.out.println("Make trial exam.");
+		System.out.println("Make trial exam.");
 		Exam trailExam = new Exam(framework, numProblems, maxProblemConcepts);
 		Exam cloneExam = new Exam(trailExam);
 		Exam baseLineCopy = new Exam(trailExam);
@@ -98,10 +93,10 @@ public class FinalProject {
 							correctPredictions_bayes + ", " + 
 							numFalse + ", " + clone_same);
 							
-		System.out.println("# student answered wrong: " + numFalse);
-		System.out.println("# base line correctly predicted: " + correctPredictions_bl);
-		System.out.println("# bayes correctly predicted: " + correctPredictions_bayes);
-		System.out.println("# clone the same: " + clone_same);
+		System.out.println("# student answered wrong:\t " + numFalse + "\t" + numFalse/(float)numProblems*100 + "%");
+		System.out.println("# base line correctly predicted: " + correctPredictions_bl + "\t" + correctPredictions_bl/(float)numProblems*100 + "%");
+		System.out.println("# bayes correctly predicted: \t " + correctPredictions_bayes + "\t" + correctPredictions_bayes/(float)numProblems*100 + "%");
+		System.out.println("# clone the same:\t \t " + clone_same + "\t" + clone_same/(float)numProblems*100 + "%");
 		
 		
 		try {
@@ -112,7 +107,7 @@ public class FinalProject {
 						correctPredictions_bl + ", " +
 						correctPredictions_bayes + ", " +
 						numFalse + ", " +
-						clone_same + ", " + time + "\n");
+						clone_same + "\n");
 			fstream.close();
 		} catch (Exception e) {// Catch exception if any
 			System.err.println("Error: " + e.getMessage());
