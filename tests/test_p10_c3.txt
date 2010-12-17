@@ -1,0 +1,25 @@
+Concepts 3
+Problems 10
+U Levels 4
+Max P Concepts 2
+Make training exam.
+Students takes training exam.
+Seed Baseline Solver...done.
+Seed Bayse Solver...Make trial exam.
+Baseline, Bayes, Student, Clone
+true, true, true, true
+false, true, true, false
+false, false, false, false
+false, false, false, false
+false, true, true, true
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+true, true, true, true
+Totals
+8, 10, 6, 9
+# student answered wrong:	 6	60.000004%
+# base line correctly predicted: 8	80.0%
+# bayes correctly predicted: 	 10	100.0%
+# clone the same:	 	 9	90.0%

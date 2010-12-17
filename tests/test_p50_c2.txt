@@ -1,0 +1,65 @@
+Concepts 2
+Problems 50
+U Levels 4
+Max P Concepts 2
+Make training exam.
+Students takes training exam.
+Seed Baseline Solver...done.
+Seed Bayse Solver...Make trial exam.
+Baseline, Bayes, Student, Clone
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, true, true, true
+false, false, false, false
+false, true, true, false
+false, true, true, true
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, true, true, false
+false, false, false, false
+false, true, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, true, true, false
+false, false, false, false
+false, false, false, false
+false, true, true, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, true, true, true
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+Totals
+43, 49, 43, 46
+# student answered wrong:	 43	86.0%
+# base line correctly predicted: 43	86.0%
+# bayes correctly predicted: 	 49	98.0%
+# clone the same:	 	 46	92.0%

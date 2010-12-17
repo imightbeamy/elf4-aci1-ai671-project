@@ -1,0 +1,115 @@
+Concepts 2
+Problems 100
+U Levels 4
+Max P Concepts 2
+Make training exam.
+Students takes training exam.
+Seed Baseline Solver...done.
+Seed Bayse Solver...Make trial exam.
+Baseline, Bayes, Student, Clone
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, true, true
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, true, true
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, true
+false, false, false, false
+false, false, true, true
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, true, true
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, true
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, true
+false, false, false, false
+false, false, false, false
+false, false, true, true
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, true, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, false
+false, false, false, true
+false, false, false, false
+false, false, false, false
+false, false, false, true
+false, false, true, false
+false, false, false, false
+Totals
+93, 93, 93, 93
+# student answered wrong:	 93	93.0%
+# base line correctly predicted: 93	93.0%
+# bayes correctly predicted: 	 93	93.0%
+# clone the same:	 	 93	93.0%
