@@ -1,22 +1,19 @@
 package aiProj;
 
-
-
 public class StudentConcept extends Concept {
-	
-	private float level; 
+
+	private float level;
 
 	public StudentConcept(int id, float level) {
 		super(id);
 		this.level = level;
 	}
-	
-	public float getLevel(){
+
+	public float getLevel() {
 		return level;
 	}
-	
-	public void setLevel(float level)
-	{
+
+	public void setLevel(float level) {
 		this.level = level;
 	}
 
