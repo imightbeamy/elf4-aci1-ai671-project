@@ -33,6 +33,7 @@ public class ConceptFramework {
 	public Problem newProblem(int maxNumConcepts){
 		int numConcepts = gen.nextInt(maxNumConcepts) + 1;
 		ArrayList<Concept> problemConcepts = new ArrayList<Concept>();
+		@SuppressWarnings("unchecked")
 		ArrayList<Concept> temp = (ArrayList<Concept>) allConcepts.clone();
 		int nextConcept;
 		for (int i = 0; i < numConcepts; i++){

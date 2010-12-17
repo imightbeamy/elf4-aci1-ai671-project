@@ -88,6 +88,7 @@ public class StudentConceptFramework{
 		return toReturn;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public StudentConceptFramework clone(){
 		StudentConceptFramework clone = new StudentConceptFramework(levels, numConcepts);
 		clone.concepts = (ArrayList<StudentConcept>) concepts.clone();

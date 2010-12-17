@@ -37,6 +37,15 @@ public class Problem {
 	public boolean results() {
 		return suceeded;
 	}
+
+	public boolean hasConcept(int conceptNum) {
+		for (Concept c: myConcepts){
+			if (c.getId() == conceptNum){
+				return true;
+			}
+		}
+		return false;
+	}
 	
 
 }
