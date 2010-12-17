@@ -6,8 +6,8 @@ public class FinalProject {
 
 	public static void main(String[] args){
 	
-		int numConcepts = 6;
-		int numProblems = 1000;
+		int numConcepts = 5;
+		int numProblems = 500;
 		int levelsOfUnderstanding = 4;
 		int maxProblemConcepts = 2;
 	 	
@@ -114,7 +114,7 @@ public class FinalProject {
 		
 		try {
 			// Create file
-			FileWriter fstream = new FileWriter("summery.csv",true);
+			FileWriter fstream = new FileWriter("summary.csv",true);
 			fstream.write(numConcepts + ", " +
 						numProblems + ", " +
 						correctPredictions_bl + ", " +
