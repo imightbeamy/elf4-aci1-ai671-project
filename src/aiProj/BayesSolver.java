@@ -64,6 +64,7 @@ public class BayesSolver extends Solver{
 		return minds;
 	}
 
+	@SuppressWarnings("unchecked")
 	private ArrayList<ArrayList<Integer>> generateSettings(int concepts) {
 		if (concepts == 0){
 			ArrayList<ArrayList<Integer>> first = new ArrayList<ArrayList<Integer>>();
