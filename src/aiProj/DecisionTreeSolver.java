@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class DecisionTreeSolver extends Solver {
 	
 	private DecisionNode root;
-
+	private final int MAX_DEPTH = 10;
+	
 	public DecisionTreeSolver(int numConcepts, int understandingLevels) {
 		super(numConcepts, understandingLevels);
 	}
@@ -14,12 +15,13 @@ public class DecisionTreeSolver extends Solver {
 	@Override
 	public void seed(Exam exam) {
 		
-		root = buildDecisionTree(exam.problems);
+		root = buildDecisionTree(exam.problems,0);
 		
 	}
 
-	DecisionNode buildDecisionTree(ArrayList<Problem> dataset){
-		if (dataset.size() == 0){
+	DecisionNode buildDecisionTree(ArrayList<Problem> dataset, int depth)
+	{
+		if (depth > MAX_DEPTH || dataset.size() == 0){
 			return null;
 		}
 		int split = findBestSplit(dataset);
@@ -35,9 +37,9 @@ public class DecisionTreeSolver extends Solver {
 				}
 			}
 			
-			n.positiveNode = buildDecisionTree(positives);
+			n.positiveNode = buildDecisionTree(positives, depth + 1);
 			
-			n.negativeNode = buildDecisionTree(negatives);
+			n.negativeNode = buildDecisionTree(negatives, depth + 1);
 		}
 		if (split == -1 || n.positiveNode == null || n.negativeNode == null){
 			n.splitValue = -1;
