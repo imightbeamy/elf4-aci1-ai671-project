@@ -8,7 +8,7 @@ public class FinalProject {
 	
 		int numConcepts = 5;
 		int numProblems = 500;
-		int levelsOfUnderstanding = 4;
+		int levelsOfUnderstanding = 3;
 		int maxProblemConcepts = 2;
 	 	
 		if(args.length == 4)

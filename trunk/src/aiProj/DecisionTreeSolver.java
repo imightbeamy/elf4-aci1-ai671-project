@@ -23,7 +23,6 @@ public class DecisionTreeSolver extends Solver {
 			return null;
 		}
 		int split = findBestSplit(dataset);
-		//System.out.println(split);
 		DecisionNode n = new DecisionNode(split);
 		if (split != -1){
 			ArrayList<Problem> positives = new ArrayList<Problem>();
@@ -37,22 +36,27 @@ public class DecisionTreeSolver extends Solver {
 			}
 			
 			n.positiveNode = buildDecisionTree(positives);
+			
 			n.negativeNode = buildDecisionTree(negatives);
 		}
 		if (split == -1 || n.positiveNode == null || n.negativeNode == null){
 			n.splitValue = -1;
-			n.classification = dataset.get(0).results();
-			//System.out.println(n.classification);
+			n.classification = mostFreqResult(dataset);
+			System.out.println(n.classification);
 		}
 		return n;
 	}
 
 	public int findBestSplit(ArrayList<Problem> dataset){
+		
+		if(sameConcepts(dataset) || sameResults(dataset))
+			return -1;
+		
 		int bestConcept = 0;
 		double minEntropy = totalEntropy(dataset, 0);
 	
 		for (int c = 1; c < numConcepts; c++){
-			System.out.println(totalEntropy(dataset, c));
+			//System.out.println(totalEntropy(dataset, c));
 			//System.out.println(c);
 			if (totalEntropy(dataset, c) < minEntropy){
 				minEntropy = totalEntropy(dataset, c);
@@ -66,9 +70,46 @@ public class DecisionTreeSolver extends Solver {
 		return bestConcept;
 		
 	}
+	
+	public boolean sameConcepts(ArrayList<Problem> dataset)
+	{
+		Problem first = dataset.get(0);
+		for(Problem p: dataset)
+		{
+			if(!first.equals(p))
+				return false;
+		}
+		return true;
+	}
 
-
-
+	public boolean mostFreqResult(ArrayList<Problem> dataset)
+	{
+		int pos = 0;
+		int neg = 0;
+		
+		for(Problem p: dataset)
+		{
+			if(p.results())
+				pos++;
+			else
+				neg++;
+		}
+		if(pos > neg)
+			return true;
+		return false;
+	}
+	
+	public boolean sameResults(ArrayList<Problem> dataset)
+	{
+		boolean first = dataset.get(0).results();
+		for(Problem p: dataset)
+		{
+			if(first != p.results())
+				return false;
+		}
+		return true;
+	}
+	
 	private double totalEntropy(ArrayList<Problem> dataset, int c) {
 		ArrayList<Problem> positives = new ArrayList<Problem>();
 		ArrayList<Problem> negatives = new ArrayList<Problem>();
@@ -122,18 +163,19 @@ public class DecisionTreeSolver extends Solver {
 		DecisionNode negativeNode;
 		
 		DecisionNode(int value){
-			value = splitValue;
+			splitValue = value;
 			classification = false;
 		}
 		
 		boolean getClassification(Problem p) {
+			System.out.println(splitValue);
 			if (isTerminalNode()){
 				return classification;
 			}
 			else if (p.hasConcept(splitValue)){
-				return positiveNode.getClassification(p);
+				return positiveNode.getClassification(p);	
 			}
-			return (negativeNode.getClassification(p));
+			return negativeNode.getClassification(p);
 		}
 
 		boolean isTerminalNode(){

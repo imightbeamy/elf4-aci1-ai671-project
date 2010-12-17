@@ -47,5 +47,23 @@ public class Problem {
 		return false;
 	}
 	
+	public boolean equals(Object o)
+	{
+		if(o instanceof Problem)
+		{
+			Problem p = (Problem) o;
+			if(p.myConcepts.size() != myConcepts.size())
+				return false;
+			
+			for(Concept c: p.myConcepts)
+			{
+				if(!myConcepts.contains(c))
+					return false;
+			}
+			return true;
+		}
+		return false;
+	}
+	
 
 }
