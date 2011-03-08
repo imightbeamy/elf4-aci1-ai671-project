@@ -5,15 +5,18 @@ import java.util.ArrayList;
 public class Problem {
 	
 	private ArrayList<Concept> myConcepts;
+	private ArrayList<Integer> myDifficulty;
 	private boolean suceeded;
+	int numLevels = 10;
 
-	public Problem(ArrayList<Concept> problemConcepts) {
+	public Problem(ArrayList<Concept> problemConcepts, ArrayList<Integer> conceptDifficulties) {
 		myConcepts = problemConcepts;
+		myDifficulty = conceptDifficulties;
 		suceeded = false;
 	}
 	
 	public Problem clone(){
-		Problem p = new Problem(myConcepts);
+		Problem p = new Problem(myConcepts, myDifficulty);
 		return p;
 	}
 

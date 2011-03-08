@@ -3,6 +3,8 @@ package aiProj;
 import java.io.FileWriter;
 
 public class FinalProject {
+	
+	public static int numLevelsDifficulty = 10;
 
 	public static void main(String[] args){
 	
@@ -69,11 +71,11 @@ public class FinalProject {
 		int clone_same = 0;
 		int tree_correct = 0;
 		for(int p = 0; p < numProblems; p++){
-			System.out.println(baseLineCopy.getProblem(p).results() + ", " 
-							+ bayesCopy.getProblem(p).results() + ", "
-							+	trailExam.getProblem(p).results() + ", "
-							+    cloneExam.getProblem(p).results() + ", "
-							+     treeExam.getProblem(p).results());
+			//System.out.println(baseLineCopy.getProblem(p).results() + ", " 
+			//				+ bayesCopy.getProblem(p).results() + ", "
+			//				+	trailExam.getProblem(p).results() + ", "
+			//				+    cloneExam.getProblem(p).results() + ", "
+			//				+     treeExam.getProblem(p).results());
 			
 			if (baseLineCopy.getProblem(p).results()
 					== trailExam.getProblem(p).results())
