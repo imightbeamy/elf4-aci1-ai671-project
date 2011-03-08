@@ -25,7 +25,16 @@ public class Student {
 		for (Concept c: current.getConcepts()){
 			probabilityOfSuccess *= mind.getAbility(c);
 		}
-		//System.out.println(probabilityOfSuccess);
+		return probabilityOfSuccess >= gen.nextDouble();
+	}
+	
+	
+private boolean attempt(MultipleChoiceProblem current) {
+		double probabilityOfSuccess = 1;
+		double falsePositive = current.falsePositive();
+		for (Concept c: current.getConcepts()){
+			probabilityOfSuccess *= mind.getAbility(c);
+		}
 		return probabilityOfSuccess >= gen.nextDouble();
 	}
 	

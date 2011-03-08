@@ -44,7 +44,7 @@ public class DecisionTreeSolver extends Solver {
 		if (split == -1 || n.positiveNode == null || n.negativeNode == null){
 			n.splitValue = -1;
 			n.classification = mostFreqResult(dataset);
-			System.out.println(n.classification);
+			//System.out.println(n.classification);
 		}
 		return n;
 	}
@@ -170,7 +170,7 @@ public class DecisionTreeSolver extends Solver {
 		}
 		
 		boolean getClassification(Problem p) {
-			System.out.println(splitValue);
+			//System.out.println(splitValue);
 			if (isTerminalNode()){
 				return classification;
 			}
